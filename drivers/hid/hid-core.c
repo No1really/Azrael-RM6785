@@ -1138,6 +1138,16 @@ EXPORT_SYMBOL_GPL(hid_open_report);
 
 static s32 snto32(__u32 value, unsigned n)
 {
+<<<<<<< HEAD
+=======
+	if (!value || !n)
+		return 0;
+
+
+	if (n > 32)
+		n = 32;
+
+>>>>>>> 809783f8b4b6 (HID: core: fix shift-out-of-bounds in hid_report_raw_event)
 	switch (n) {
 	case 8:  return ((__s8)value);
 	case 16: return ((__s16)value);
