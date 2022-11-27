@@ -861,6 +861,8 @@
 	goodix,gpio_irq = <&pio 75 0x00>;
 	goodix,gpio_reset = <&pio 105 0x00>;
 	spi-max-frequency = <8000000>;
+	goodix,power-on-delay-us = <5000>; /*5ms*/
+        goodix,power-off-delay-us = <2000>;
 	status = "okay";
 };
 /*-------------------the goodix device config end----------------------*/
