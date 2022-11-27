@@ -43,6 +43,23 @@ bool kthread_is_per_cpu(struct task_struct *k);
  * Description: Convenient wrapper for kthread_create() followed by
  * wake_up_process().  Returns the kthread or ERR_PTR(-ENOMEM).
  */
+/**
+ * kthread_run_perf_critical - create and wake a performance-critical thread.
+ *
+ * Same as kthread_run(), but with the kthread bound to performance CPUs.
+ */
+#define kthread_run_perf_critical(threadfn, data, namefmt, ...)		   \
+({									   \
+	struct task_struct *__k						   \
+		= kthread_create(threadfn, data, namefmt, ## __VA_ARGS__); \
+	if (!IS_ERR(__k)) {						   \
+		__k->flags |= PF_PERF_CRITICAL;				   \
+		kthread_bind_mask(__k, cpu_perf_mask);			   \
+		wake_up_process(__k);					   \
+	}								   \
+	__k;								   \
+})
+
 #define kthread_run(threadfn, data, namefmt, ...)			   \
 ({									   \
 	struct task_struct *__k						   \
