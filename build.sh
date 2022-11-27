@@ -40,6 +40,5 @@ zip -r9 ThunderStorm-lto-KERNEL-RM6785-$date.zip *
 curl -sL https://git.io/file-transfer | sh
 ./transfer wet Azrael-lto-KERNEL-RM6785-$date.zip
 }
-
 compile
 zupload
