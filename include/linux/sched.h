@@ -569,6 +569,17 @@ struct sched_entity {
 };
 
 #ifdef CONFIG_SCHED_WALT
+extern void sched_exit(struct task_struct *p);
+extern int register_cpu_cycle_counter_cb(struct cpu_cycle_counter_cb *cb);
+extern void sched_set_io_is_busy(int val);
+extern int sched_set_group_id(struct task_struct *p, unsigned int group_id);
+extern unsigned int sched_get_group_id(struct task_struct *p);
+extern int sched_set_init_task_load(struct task_struct *p, int init_load_pct);
+extern u32 sched_get_init_task_load(struct task_struct *p);
+extern void sched_update_cpu_freq_min_max(const cpumask_t *cpus, u32 fmin,
+					  u32 fmax);
+extern int sched_set_boost(int enable);
+extern void free_task_load_ptrs(struct task_struct *p
 #define RAVG_HIST_SIZE_MAX  5
 
 /* ravg represents frequency scaled cpu-demand of tasks */
@@ -602,7 +613,12 @@ struct ravg {
 	u16 active_windows;
 };
 #endif
-
+static inline int sched_set_boost(int enable)
+{
+	return -EINVAL;
+}
+				
+				
 struct sched_rt_entity {
 	struct list_head		run_list;
 	unsigned long			timeout;
@@ -1681,6 +1697,7 @@ extern struct pid *cad_pid;
 #define PF_PERF_CRITICAL	0x10000000	/* Thread is performance-critical */
 #define PF_MUTEX_TESTER		0x20000000	/* Thread belongs to the rt mutex tester */
 #define PF_FREEZER_SKIP		0x40000000	/* Freezer should not count it as freezable */
+#define PF_PERF_CRITICAL	0x02000000	/* Thread is performance-critical */				
 #define PF_SUSPEND_TASK		0x80000000      /* This thread called freeze_processes() and should not be frozen */
 #if defined(OPLUS_FEATURE_PROCESS_RECLAIM) && defined(CONFIG_PROCESS_RECLAIM_ENHANCE)
 /* Kui.Zhang@PSW.BSP.Kernel.Performance, 2018-12-25, flag that current task is process reclaimer */
