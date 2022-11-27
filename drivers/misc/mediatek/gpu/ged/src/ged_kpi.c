@@ -314,7 +314,7 @@ static unsigned int gx_gpu_freq_avg;
 #ifdef GED_KPI_CPU_BOOST
 static int boost_accum_cpu;
 /* for non-GED_KPI_MAX_FPS-FPS cases */
-static long target_t_cpu_remained = 16000000;
+static long target_t_cpu_remained = 8300000;
 /* static long target_t_cpu_remained_min = 8300000; */
 /* default 0.5 vsync period */
 static int cpu_boost_policy;
