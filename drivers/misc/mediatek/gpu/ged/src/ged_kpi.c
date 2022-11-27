@@ -506,8 +506,26 @@ static void ged_kpi_PushCurFps_and_DetectAppSelfFrc(int fps)
 						fps_grp[i] = 48;
 					else if (fps_records[i] <= 51)
 						fps_grp[i] = 50;
-					else
-						fps_grp[i] = 60;
+					else if (fps_records[i] <= 56)
+						fps_grp[i] = 55;
+					else if (fps_records[i] <= 60)
+						fps_grp[i] = 59 ;
+					else if (fps_records[i] <= 61)
+						fps_grp[i] = 60 ; 
+					else if (fps_records[i] <= 66)
+						fps_grp[i] = 65 ; 
+					else if (fps_records[i] <= 72)
+						fps_grp[i] = 71 ; 
+					else if (fps_records[i] <= 77)
+						fps_grp[i] = 76 ; 
+					else if (fps_records[i] <= 83)
+						fps_grp[i] = 79 ;
+					else if (fps_records[i] <= 87)
+						fps_grp[i] = 86 ;
+					else if (fps_records[i] <= 89)
+						fps_grp[i] = 88 ;
+					else 
+						fps_grp[i] = 90;
 				}
 
 				for (i = 0; i < G_K_G_S_FRC_D_M_W_S - 1; i++) {
@@ -530,21 +548,38 @@ static void ged_kpi_PushCurFps_and_DetectAppSelfFrc(int fps)
 				}
 
 			} else {
-				if (fps <= 28)
-					fps = 24;
-				else if (fps <= 31)
-					fps = 30;
-				else if (fps <= 37)
-					fps = 36;
-				else if (fps <= 45)
-					fps = 45;
-				else if (fps <= 49)
-					fps = 48;
-				else if (fps <= 51)
-					fps = 50;
-				else
-					fps = 60;
-
+				if (fps_records[i] <= 28)
+						fps_grp[i] = 24;
+					else if (fps_records[i] <= 31)
+						fps_grp[i] = 30;
+					else if (fps_records[i] <= 37)
+						fps_grp[i] = 36;
+					else if (fps_records[i] <= 45)
+						fps_grp[i] = 45;
+					else if (fps_records[i] <= 49)
+						fps_grp[i] = 48;
+					else if (fps_records[i] <= 51)
+						fps_grp[i] = 50;
+					else if (fps_records[i] <= 56)
+						fps_grp[i] = 55;
+					else if (fps_records[i] <= 60)
+						fps_grp[i] = 59 ;
+					else if (fps_records[i] <= 61)
+						fps_grp[i] = 60 ; 
+					else if (fps_records[i] <= 66)
+						fps_grp[i] = 65 ; 
+					else if (fps_records[i] <= 72)
+						fps_grp[i] = 71 ; 
+					else if (fps_records[i] <= 77)
+						fps_grp[i] = 76 ; 
+					else if (fps_records[i] <= 83)
+						fps_grp[i] = 79 ;
+					else if (fps_records[i] <= 87)
+						fps_grp[i] = 86 ;
+					else if (fps_records[i] <= 89)
+						fps_grp[i] = 88 ;
+					else 
+						fps_grp[i] = 90;
 				if (fps < target_fps_4_main_head)
 					afrc_rst_over_target_cnt++;
 				else
@@ -582,7 +617,7 @@ static void ged_kpi_PushCurFps_and_DetectAppSelfFrc(int fps)
 				GED_LOGE("[AFRC] fps_grp: %d, %d, %d\n",
 					fps_grp[0], fps_grp[1], fps_grp[2]);
 #endif /* GED_KPI_DEBUG */
-				if (reset == 0 && fps_grp[0] < 60) {
+				if (reset == 0 && fps_grp[0] < 90) {
 					target_fps_4_main_head = fps_grp[0];
 					is_game_control_frame_rate = 1;
 				} else {
@@ -595,7 +630,7 @@ static void ged_kpi_PushCurFps_and_DetectAppSelfFrc(int fps)
 		cur_fps_idx++;
 		cur_fps_idx %= G_K_G_S_FRC_D_M_W_S;
 	} else {
-		if (target_fps_4_main_head == 60 ||
+		if (target_fps_4_main_head == 90 ||
 			enable_game_self_frc_detect == 0)
 			is_game_control_frame_rate = 0;
 	}
