@@ -48,6 +48,7 @@ struct vreg_config {
 static const struct vreg_config const vreg_conf[] = {
         { "vdd_io", 1800000UL, 1800000UL, 10000, },
         { "vmch", 2960000UL, 2960000UL, 10000, },
+        { "avdd_io", 3300000UL, 3300000UL, 10000, },
 };
 
 struct fpc1020_data {
@@ -238,6 +239,7 @@ static ssize_t regulator_enable_set(struct device *dev,
         }
         rc = vreg_setup(fpc1020, "vdd_io", enable);
         rc = vreg_setup(fpc1020, "vmch", enable);
+        rc = vreg_setup(fpc1020, "avdd_io", enable);
         return rc ? rc : count;
 }
 
@@ -380,7 +382,8 @@ static int fpc1020_probe(struct platform_device *pdev)
                         &&(FP_FPC_1023_GLASS != get_fpsensor_type())
                         &&(FP_FPC_1270 != get_fpsensor_type())
                         &&(FP_FPC_1511 != get_fpsensor_type())
-                        &&(FP_FPC_1541 != get_fpsensor_type())) {
+                        &&(FP_FPC_1541 != get_fpsensor_type())
+                        &&(FP_FPC_1542 != get_fpsensor_type())) {
                 dev_err(dev, "found not fpc sensor\n");
                 rc = -EINVAL;
                 goto ERR_BEFORE_WAKELOCK;
@@ -399,7 +402,7 @@ static int fpc1020_probe(struct platform_device *pdev)
 
         /*dev_info(fpc1020->dev, "fpc1020 requested gpio finished \n");*/
 
-        irqf = IRQF_TRIGGER_RISING | IRQF_ONESHOT | IRQF_PERF_AFFINE;
+        irqf = IRQF_TRIGGER_RISING | IRQF_ONESHOT|IRQF_PERF_AFFINE;
         mutex_init(&fpc1020->lock);
         rc = devm_request_threaded_irq(dev, gpio_to_irq(fpc1020->irq_gpio),
                         NULL, fpc1020_irq_handler, irqf,
@@ -428,6 +431,7 @@ static int fpc1020_probe(struct platform_device *pdev)
 
         rc = vreg_setup(fpc1020, "vdd_io", true);
         rc = vreg_setup(fpc1020, "vmch", true);
+        rc = vreg_setup(fpc1020, "avdd_io", true);
         if (rc) {
                 dev_err(fpc1020->dev,
                                 "vreg_setup failed.\n");
