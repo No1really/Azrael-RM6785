@@ -16,7 +16,7 @@
 #if defined(CONFIG_AUTO_KPROFILES_MSM_DRM) || defined(CONFIG_AUTO_KPROFILES_FB)
 static bool screen_on = true;
 #endif
-static unsigned int mode = 3;
+static unsigned int mode = 2; //Balanced Mode
 static unsigned int rollback_mode;
 static bool auto_kprofiles = false;
 module_param(auto_kprofiles, bool, 0664);
