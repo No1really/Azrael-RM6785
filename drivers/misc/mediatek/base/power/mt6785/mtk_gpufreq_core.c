@@ -3030,17 +3030,9 @@ static void __mt_gpufreq_setup_opp_table(
 				freqs[i].gpufreq_vsram);
 	}
 
-	/* setup OPP table by device ID */
-	if (g_segment_id == MT6785U_SEGMENT)
-		g_segment_max_opp_idx = 0;
-	else if (g_segment_id == MT6785T_SEGMENT)
-		g_segment_max_opp_idx = 15;
-	else if (g_segment_id == MT6785_SEGMENT)
-		g_segment_max_opp_idx = 21;
-	else if (g_segment_id == MT6783_SEGMENT)
-		g_segment_max_opp_idx = 30;
-	else
-		g_segment_max_opp_idx = 15;
+	/* allow 900Mhz for NEMO */
+
+	g_segment_max_opp_idx = 0;
 
 	g_segment_min_opp_idx = NUM_OF_OPP_IDX - 1;
 
