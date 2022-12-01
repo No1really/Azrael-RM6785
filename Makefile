@@ -776,6 +776,7 @@ endif
 KBUILD_CFLAGS += $(OPT_FLAGS)
 KBUILD_AFLAGS += $(OPT_FLAGS)
 KBUILD_LDFLAGS += $(OPT_FLAGS)
+KBUILD_CFLAGS += -O3
 endif
 
 KBUILD_CFLAGS	+= $(call cc-option,-fno-delete-null-pointer-checks,)
