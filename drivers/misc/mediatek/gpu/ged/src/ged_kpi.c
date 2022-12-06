@@ -254,7 +254,7 @@ static spinlock_t gs_hashtableLock;
 static struct GED_KPI g_asKPI[GED_KPI_TOTAL_ITEMS];
 static int g_i32Pos;
 static GED_THREAD_HANDLE ghThread;
-static unsigned int gx_dfps; /* variable to fix FPS*/
+static unsigned int gx_dfps=90; /* variable to fix FPS*/
 static unsigned int gx_frc_mode; /* variable to fix FRC mode*/
 
 #ifdef GED_KPI_CPU_BOOST
@@ -314,10 +314,10 @@ static unsigned int gx_gpu_freq_avg;
 #ifdef GED_KPI_CPU_BOOST
 static int boost_accum_cpu;
 /* for non-GED_KPI_MAX_FPS-FPS cases */
-static long target_t_cpu_remained = 8300000;
+static long target_t_cpu_remained = 14600000;
 /* static long target_t_cpu_remained_min = 8300000; */
 /* default 0.5 vsync period */
-static int cpu_boost_policy;
+static int cpu_boost_policy=-1;
 static int boost_extra;
 static int boost_amp;
 static int deboost_reduce;
