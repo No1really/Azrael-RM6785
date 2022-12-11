@@ -7,8 +7,8 @@ source ~/.bashrc && source ~/.profile
 export LC_ALL=C && export USE_CCACHE=1
 ccache -M 100G
 export ARCH=arm64
-export KBUILD_BUILD_HOST=AbzRaider&Mr.Mnml
-export KBUILD_BUILD_USER="AbzRaider&Mr.Mnml"
+export KBUILD_BUILD_HOST=RM6785•DEV
+export KBUILD_BUILD_USER="AbzRaider"
 git clone --depth=1 https://gitlab.com/Panchajanya1999/azure-clang.git clang
 
 [ -d "out" ] && rm -rf AnyKernel && rm -rf out || mkdir -p out
