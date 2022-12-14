@@ -36,9 +36,9 @@ git clone --depth=1 https://github.com/Johny8988/AnyKernel3.git AnyKernel
 cp out/arch/arm64/boot/Image.gz-dtb AnyKernel
 cd AnyKernel
 date=$(date "+%Y-%m-%d")
-zip -r9 ThunderStorm-lto-KERNEL-RM6785-$date.zip *
-curl -sL https://git.io/file-transfer | sh
-./transfer wet Azrael-lto-KERNEL-RM6785-$date.zip
+zip -r9 Azrael-Test-OSS-"${BRANCH}"-KERNEL-"${CODENAME}"-"${DATE}".zip ./*
+    curl -sL https://git.io/file-transfer | sh
+    ./transfer wet Azrael-Test-OSS-"${BRANCH}"-KERNEL-"${CODENAME}"-"${DATE}".zip
 }
 compile
 zupload
