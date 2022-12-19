@@ -66,7 +66,7 @@ EXPORT_SYMBOL(ged_kpi_PushAppSelfFcFp_fbt);
 #define GED_KPI_MAX_FPS 91
 /* set default margin to be distinct from FPSGO(0 or 3) */
 #define GED_KPI_DEFAULT_FPS_MARGIN 4
-#define GED_KPI_CPU_MAX_OPP 0
+#define GED_KPI_CPU_MAX_OPP 4
 
 
 #define GED_TIMESTAMP_TYPE_D    0x1
@@ -297,7 +297,7 @@ static unsigned long long g_gpu_freq_accum;
 static unsigned int g_frame_count;
 
 static int gx_game_mode;
-static int gx_boost_on;
+static int gx_boost_on=-1;
 #ifdef GED_KPI_CPU_BOOST
 static int gx_force_cpu_boost;
 static int gx_top_app_pid;
