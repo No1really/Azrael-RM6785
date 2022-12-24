@@ -28,7 +28,7 @@
 
 /* mtk_cooler_mutt.c */
 /* 1: turn on adaptive MD throttle cooler; 0: turn off  */
-#define FEATURE_ADAPTIVE_MUTT		(1)
+#define FEATURE_ADAPTIVE_MUTT		(0)
 
 /* mtk_ta.c */
 /* 1: turn on SPA; 0: turn off  */
