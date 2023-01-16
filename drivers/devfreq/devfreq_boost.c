@@ -8,9 +8,15 @@
 #include <linux/devfreq_boost.h>
 #include <linux/input.h>
 #include <linux/kthread.h>
+<<<<<<< HEAD
 #include <linux/msm_drm_notify.h>
 #include <linux/slab.h>
 #include <uapi/linux/sched/types.h>
+=======
+#include <linux/slab.h>
+#include <uapi/linux/sched/types.h>
+#include "governor.h"
+>>>>>>> parent of 3de9f49edc7a (devfreq: Introduce devfreq boost driver)
 
 enum {
 	SCREEN_OFF,
@@ -30,7 +36,10 @@ struct boost_dev {
 
 struct df_boost_drv {
 	struct boost_dev devices[DEVFREQ_MAX];
+<<<<<<< HEAD
 	struct notifier_block msm_drm_notif;
+=======
+>>>>>>> parent of 3de9f49edc7a (devfreq: Introduce devfreq boost driver)
 };
 
 static void devfreq_input_unboost(struct work_struct *work);
@@ -185,6 +194,7 @@ static int devfreq_boost_thread(void *data)
 	return 0;
 }
 
+<<<<<<< HEAD
 static int msm_drm_notifier_cb(struct notifier_block *nb,
 			       unsigned long action, void *data)
 {
@@ -212,6 +222,8 @@ static int msm_drm_notifier_cb(struct notifier_block *nb,
 	return NOTIFY_OK;
 }
 
+=======
+>>>>>>> parent of 3de9f49edc7a (devfreq: Introduce devfreq boost driver)
 static void devfreq_boost_input_event(struct input_handle *handle,
 				      unsigned int type, unsigned int code,
 				      int value)
@@ -305,8 +317,14 @@ static int __init devfreq_boost_init(void)
 	for (i = 0; i < DEVFREQ_MAX; i++) {
 		struct boost_dev *b = &d->devices[i];
 
+<<<<<<< HEAD
 		thread[i] = kthread_run(devfreq_boost_thread, b,
 					"devfreq_boostd/%d", i);
+=======
+		thread[i] = kthread_run_perf_critical(cpu_perf_mask,
+						      devfreq_boost_thread, b,
+						      "devfreq_boostd/%d", i);
+>>>>>>> parent of 3de9f49edc7a (devfreq: Introduce devfreq boost driver)
 		if (IS_ERR(thread[i])) {
 			ret = PTR_ERR(thread[i]);
 			pr_err("Failed to create kthread, err: %d\n", ret);
@@ -321,6 +339,7 @@ static int __init devfreq_boost_init(void)
 		goto stop_kthreads;
 	}
 
+<<<<<<< HEAD
 	d->msm_drm_notif.notifier_call = msm_drm_notifier_cb;
 	d->msm_drm_notif.priority = INT_MAX;
 	ret = msm_drm_register_client(&d->msm_drm_notif);
@@ -333,6 +352,10 @@ static int __init devfreq_boost_init(void)
 
 unregister_handler:
 	input_unregister_handler(&devfreq_boost_input_handler);
+=======
+	return 0;
+
+>>>>>>> parent of 3de9f49edc7a (devfreq: Introduce devfreq boost driver)
 stop_kthreads:
 	while (i--)
 		kthread_stop(thread[i]);
