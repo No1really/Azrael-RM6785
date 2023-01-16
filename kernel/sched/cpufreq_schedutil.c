@@ -37,11 +37,11 @@ unsigned long boosted_cpu_util(int cpu);
 void (*cpufreq_notifier_fp)(int cluster_id, unsigned long freq);
 EXPORT_SYMBOL(cpufreq_notifier_fp);
 
-#define SUGOV_KTHREAD_PRIORITY	60
+#define SUGOV_KTHREAD_PRIORITY	50
 
 
 /* Target load.  Lower values result in higher CPU speeds. */
-#define DEFAULT_TARGET_LOAD 75
+#define DEFAULT_TARGET_LOAD 86
 static unsigned int default_target_loads[] = {DEFAULT_TARGET_LOAD};
 
 
@@ -49,12 +49,11 @@ struct sugov_tunables {
 	struct gov_attr_set attr_set;
 	unsigned int up_rate_limit_us;
 	unsigned int down_rate_limit_us;
-#if defined(OPLUS_FEATURE_SCHEDUTIL_USE_TL) && defined(CONFIG_SCHEDUTIL_USE_TL)
 	spinlock_t		target_loads_lock;
 	unsigned int		*target_loads;
 	unsigned int 		*util_loads;
 	int			ntarget_loads;
-#endif
+
 };
 
 struct sugov_policy {
