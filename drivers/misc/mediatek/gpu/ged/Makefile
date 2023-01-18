@@ -132,11 +132,7 @@ ifneq (,$(filter $(CONFIG_MTK_PLATFORM), "mt6785"))
 #ccflags-y += -DGED_KPI_MET_DEBUG
 ccflags-y += -DMTK_GED_KPI
 ccflags-y += -DGED_KPI_CPU_BOOST
-ccflags-y += -DGED_ENABLE_FB_DVFS
-ccflags-y += -DGED_ENABLE_DYNAMIC_DVFS_MARGIN
-ccflags-y += -DMTK_GPUFREQ_V1
-ccflags-y += -DMTK_CPUFREQ
-ccflags-y += -DGED_KPI_DFRC
+
 ccflags-y += -DGED_SKI_SUPPORT
 ged-y += src/ged_ski.o
 
