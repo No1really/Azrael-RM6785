@@ -44,12 +44,12 @@
 	qcom,input_current_vooc_ma_normal = <3600>;
 	qcom,vooc_temp_bat_normal_decidegc = <350>;
 	qcom,input_current_vooc_ma_warm = <3200>;
-	qcom,vooc_temp_bat_warm_decidegc = <370>;
-	qcom,input_current_vooc_ma_high = <2200>;
+	qcom,vooc_temp_bat_warm_decidegc = <390>;
+	qcom,input_current_vooc_ma_high = <2400>;
 	qcom,led_high_bat_decidegc = <440>;
 	qcom,vooc_temp_bat_hot_decidegc = <440>;
 
-	qcom,charger_current_vooc_ma_normal = <1800>;
+	qcom,charger_current_vooc_ma_normal = <1900>;
 	qcom,overtemp_bat_decidegc = <350>;
 	qcom,iterm_disabled = <0>;
 	//sw_full_count = <25>;
@@ -94,7 +94,7 @@
 	qcom,temp_normal_fastchg_current_ma = <2200>;
 	qcom,temp_normal_vfloat_mv = <4435>;
 	//qcom,pd_temp_normal_fastchg_current_ma = <2000>;
-	qcom,qc_temp_normal_fastchg_current_ma = <2000>;
+	qcom,qc_temp_normal_fastchg_current_ma = <4000>;
 
 	qcom,warm_bat_decidegc = <450>;		/* 45C ~ 53C */ /*8pin Bat Vooc project need add 3 degree C*/
 
