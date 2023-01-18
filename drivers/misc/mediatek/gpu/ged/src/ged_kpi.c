@@ -298,9 +298,9 @@ static unsigned int g_frame_count;
 
 static int gx_game_mode;
 static int gx_boost_on=0;
-static int gx_force_cpu_boost,=1;
+static int gx_force_cpu_boost=1;
 static int gx_top_app_pid;
-static int enable_game_self_frc_detect;
+static int enable_game_self_frc_detect=1;
 static unsigned int gx_fps;
 static unsigned int gx_cpu_time_avg;
 static unsigned int gx_gpu_time_avg;
