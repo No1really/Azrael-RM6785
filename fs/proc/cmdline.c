@@ -132,7 +132,7 @@ static int __init proc_cmdline_init(void)
 			 * 	 * Replace various flags from command line seen by userspace in order to
 			 * 	 	 * pass SafetyNet CTS check.
 			 * 	 	 	 */
-			patch_begonia_cmdline(patched_cmdline);
+			patch_rm6785_cmdline(patched_cmdline);
 				replace_safetynet_flags(patched_cmdline);
 #endif
 	proc_create("cmdline", 0, NULL, &cmdline_proc_fops);
