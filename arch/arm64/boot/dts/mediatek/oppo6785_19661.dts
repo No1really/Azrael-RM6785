@@ -42,7 +42,7 @@
 		chip-name = "NT36672C_NF";
 		status = "ok";
 
-		spi-max-frequency = <19200000>; //4800000,9600000,15000000,19200000
+		spi-max-frequency = <15000000>; //4800000,9600000,15000000,19200000
 		reset-gpio = <&pio 2 0>;
 		interrupt-parent = <&pio>;
 		interrupts = <0 IRQ_TYPE_EDGE_FALLING 0 0>; //1 IRQ_TYPE_EDGE_FALLING 1 0
