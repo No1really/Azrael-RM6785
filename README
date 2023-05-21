@@ -8,13 +8,14 @@ This repository contains the ThunderstormReborn-RM6785 kernel, a direct fork of 
 
 - Stability improvements for Realme 6785 devices
 - Mild performance enhancements
+- Direct fork of [android_kernel_realme_RM6785](https://github.com/anupamroy777/android_kernel_realme_RM6785)
 
 ## Prerequisites
 
 Before using the ThunderstormReborn-RM6785 kernel, ensure that you have the following:
 
 - Realme 6785 device
-- Custom recovery installed (e.g., TWRP,PBRP,Lineage/Leaf recovery,etc)
+- Custom recovery installed (e.g., TWRP)
 - Basic knowledge of flashing custom kernels
 
 ## Installation
@@ -36,14 +37,20 @@ If you encounter any issues or bugs with the ThunderstormReborn-RM6785 kernel, y
 
 For updates, discussions, and direct support related to ThunderstormReborn-RM6785, join our Telegram group: [Kernelspace for Realme 6785 devices](https://t.me/kernelspaceOT). Feel free to ask questions, share feedback, and engage with the community.
 
+## Contributing
+
+Contributions to the ThunderstormReborn-RM6785 kernel are welcome! If you would like to contribute, please follow the guidelines outlined in [CONTRIBUTING.md](https://github.com/No1really/ThunderstormReborn-RM6785/blob/main/CONTRIBUTING.md).
+
 ## License
 
 The ThunderstormReborn-RM6785 kernel is released under the [MIT License](https://github.com/No1really/ThunderstormReborn-RM6785/blob/main/LICENSE).
 
 ## Acknowledgments
 
-Special thanks to [anupamroy777](https://github.com/anupamroy777) for the original repository [android_kernel_realme_RM6785](https://github.com/anupamroy777/android_kernel_realme_RM6785) repository, which served as the base for this project.
+Special thanks to [anupamroy777](https://github.com/anupamroy777) for the original [android_kernel_realme_RM6785](https://github.com/anupamroy777/android_kernel_realme_RM6785) repository, which served as the base for this project.
 
 ## Contact
 
-You can reach out to us through our telegram group for all your kernel related needs :[KernelSpace-OT] (https://t.me/kernelspaceOT)
+For any further inquiries or information, you can reach out to the project maintainer at [maintainer@example.com](mailto:maintainer@example.com).
+
+---
