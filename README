@@ -1,4 +1,4 @@
-# ThunderstormReborn-RM6785
+ThunderstormReborn-RM6785
 
 Welcome to the ThunderstormReborn-RM6785 repository! This repository hosts the ThunderstormReborn-RM6785 kernel, a customized version of the [android_kernel_realme_RM6785](https://github.com/anupamroy777/android_kernel_realme_RM6785) kernel created by [anupamroy777](https://github.com/anupamroy777). Our kernel focuses on providing stability improvements and mild performance enhancements specifically designed for Realme 6785 devices.
 
@@ -16,28 +16,30 @@ Before installing the ThunderstormReborn-RM6785 kernel, make sure you have the f
 - Custom recovery installed, such as TWRP.
 - Basic knowledge of flashing custom kernels.
 
-## Installation
+# Installation
 
 To install the ThunderstormReborn-RM6785 kernel on your Realme 6785 device, follow these steps:
+## Using Recovery (Safest and recommended) : 
 
-1. Download the latest kernel release from the [Releases](https://github.com/No1really/ThunderstormReborn-RM6785/releases) page.
+1. Download the latest kernel release from the telegram channel : http://t.me/kernelspace6785
+2. Save it in your sd card.
 2. Boot your device into recovery mode.
 3. Flash the downloaded kernel ZIP file using your custom recovery.
 4. Reboot your device.
 
+## Using FKM (Best if youre rooted)
+
+1. Install the lastest version of Franko-Kernel-Manager (a.k.a FKM) using the APK available in the group notes.
+2. Open the app and give it superuser permissions.
+3. On the bottom right corner, tap on the hamburger menu and tap on 'Flasher'
+4. After you enter the Flasher, tap on install on 'Manual Flasher' at the bottom. 
+5. Locate the file using the browser that pops up. After selecting the file, you can either Flash and reboot or Just Flash and manually reboot later.
+6. After your device reboots, go into your about phone section and check if the kernel name/version has changed. If it hasn't continue as guided above in the recovery method.
 Please be aware that installing a custom kernel may void your device's warranty and could potentially lead to system instability. Proceed at your own risk.
 
-## Reporting Issues
-
-If you encounter any issues or bugs with the ThunderstormReborn-RM6785 kernel, please report them by opening an issue on the [Issues](https://github.com/No1really/ThunderstormReborn-RM6785/issues) page of this repository. Provide detailed information about the problem you are facing, including relevant logs or error messages.
-
-## Updates and Support
+# Updates and Support
 
 Join our Telegram group, [Kernelspace for Realme 6785 devices](https://t.me/kernelspaceOT), for updates, discussions, and direct support related to ThunderstormReborn-RM6785. Feel free to ask questions, share feedback, and engage with the community.
-
-## Contributing
-
-We welcome contributions to the ThunderstormReborn-RM6785 kernel! If you would like to contribute, please follow the guidelines outlined in [CONTRIBUTING.md](https://github.com/No1really/ThunderstormReborn-RM6785/blob/main/CONTRIBUTING.md).
 
 ## License
 
@@ -49,6 +51,6 @@ Special thanks to [anupamroy777](https://github.com/anupamroy777) for creating t
 
 ## Contact
 
-For any further inquiries or information, you can reach out to the project maintainer through the aforementioned telegram group.
+For any further inquiries or information, you can reach out to the maintainers through the aforementioned telegram group.
 
 ---
