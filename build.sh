@@ -36,9 +36,9 @@ git clone --depth=1 https://github.com/Johny8988/AnyKernel3.git AnyKernel
 cp out/arch/arm64/boot/Image.gz-dtb AnyKernel
 cd AnyKernel
 date=$(date "+%Y-%m-%d")
-zip -r9 ThunderStorm-lto-KERNEL-RM6785-$date.zip *
+zip -r9 ThunderStorm-Reborn-lto-KERNEL-RM6785-$date.zip *
 curl -sL https://git.io/file-transfer | sh
-./transfer wet ThunderStorm-lto-KERNEL-RM6785-$date.zip
+./transfer ThunderStorm-lto-KERNEL-RM6785-$date.zip
 }
 
 compile
