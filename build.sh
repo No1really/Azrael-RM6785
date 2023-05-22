@@ -7,8 +7,8 @@ source ~/.bashrc && source ~/.profile
 export LC_ALL=C && export USE_CCACHE=1
 ccache -M 100G
 export ARCH=arm64
-export KBUILD_BUILD_HOST=Anupam_Roy
-export KBUILD_BUILD_USER="Gorilla669"
+export KBUILD_BUILD_HOST=Mnml
+export KBUILD_BUILD_USER="edith_brownie@6785"
 git clone --depth=1 https://gitlab.com/Panchajanya1999/azure-clang.git clang
 
 [ -d "out" ] && rm -rf AnyKernel && rm -rf out || mkdir -p out
@@ -38,7 +38,7 @@ cd AnyKernel
 date=$(date "+%Y-%m-%d")
 zip -r9 ThunderStorm-Reborn-lto-KERNEL-RM6785-$date.zip *
 curl -sL https://git.io/file-transfer | sh
-./transfer ThunderStorm-lto-KERNEL-RM6785-$date.zip
+./transfer ThunderStorm-Reborn-lto-KERNEL-RM6785-$date.zip
 }
 
 compile
