@@ -70,10 +70,6 @@
  *
  *********************************************************************/
 
-#ifdef CONFIG_SRANDOM
-#include <../drivers/char/srandom/srandom.h>
-#endif
-
 /*
  * crng_init is protected by base_crng->lock, and only increases
  * its value (from empty->early->ready).
@@ -1182,6 +1178,7 @@ static void __cold try_to_generate_entropy(void)
 	destroy_timer_on_stack(&stack.timer);
 	mix_pool_bytes(&stack.entropy, sizeof(stack.entropy));
 }
+
 
 /**********************************************************************
  *

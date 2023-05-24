@@ -114,7 +114,7 @@ static ssize_t idle_state_write(char *FromUserBuf, size_t sz, void *priv)
 		} else if (!strcmp(cmd, "spmtwam_sel")) {
 			mtk_idle_get_twam()->sel = parm;
 		} else if (!strcmp(cmd, "spmtwam")) {
-			pr_debug("Power/swap spmtwam_event = %d\n", parm);
+			pr_info("Power/swap spmtwam_event = %d\n", parm);
 			if (parm >= 0)
 				mtk_idle_twam_enable(parm);
 			else
@@ -141,7 +141,7 @@ static void mtk_idle_init(void)
 			, 0644, &idle_state_fops, NULL);
 }
 
-void __init mtk_cpuidle_framework_init(void)
+void mtk_cpuidle_framework_init(void)
 {
 	mtk_idle_sysfs_entry_create();
 

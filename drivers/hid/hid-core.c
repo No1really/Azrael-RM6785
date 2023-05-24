@@ -1444,6 +1444,7 @@ static void hid_output_field(const struct hid_device *hid,
 				  field->value[n]);
 	}
 }
+
  /*
  * Compute the size of a report.
  */
@@ -1454,6 +1455,7 @@ static size_t hid_compute_report_size(struct hid_report *report)
 
 	return 0;
 }
+
  /*
  * Create a report. 'data' has to be allocated using
  * hid_alloc_report_buf() so that it has proper size.
@@ -2308,6 +2310,16 @@ static const struct hid_device_id hid_have_special_driver[] = {
 #endif
 #if IS_ENABLED(CONFIG_HID_NTI)
 	{ HID_USB_DEVICE(USB_VENDOR_ID_NTI, USB_DEVICE_ID_USB_SUN) },
+#endif
+#if IS_ENABLED(CONFIG_HID_NINTENDO)
+	{ HID_USB_DEVICE(USB_VENDOR_ID_NINTENDO,
+		USB_DEVICE_ID_NINTENDO_PROCON) },
+	{ HID_BLUETOOTH_DEVICE(USB_VENDOR_ID_NINTENDO,
+		USB_DEVICE_ID_NINTENDO_PROCON) },
+	{ HID_BLUETOOTH_DEVICE(USB_VENDOR_ID_NINTENDO,
+		USB_DEVICE_ID_NINTENDO_JOYCONL) },
+	{ HID_BLUETOOTH_DEVICE(USB_VENDOR_ID_NINTENDO,
+		USB_DEVICE_ID_NINTENDO_JOYCONR) },
 #endif
 #if IS_ENABLED(CONFIG_HID_NTRIG)
 	{ HID_USB_DEVICE(USB_VENDOR_ID_NTRIG, USB_DEVICE_ID_NTRIG_TOUCH_SCREEN) },

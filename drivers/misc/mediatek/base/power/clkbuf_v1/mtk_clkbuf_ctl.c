@@ -28,7 +28,7 @@ bool is_clkbuf_initiated;
 /* false: rf_clkbuf, true: pmic_clkbuf */
 bool is_pmic_clkbuf = true;
 
-bool clkbuf_debug = 0;
+bool clkbuf_debug;
 static bool g_is_flightmode_on;
 unsigned int bblpm_cnt;
 
@@ -54,7 +54,7 @@ void __attribute__((weak)) clk_buf_dump_clkbuf_log(void)
 
 int __attribute__((weak)) clk_buf_fs_init(void)
 {
-	pr_debug("%s: dummy func\n", __func__);
+	pr_info("%s: dummy func\n", __func__);
 	return 0;
 }
 
