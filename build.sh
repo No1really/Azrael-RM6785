@@ -38,7 +38,7 @@ cd AnyKernel
 date=$(date "+%Y-%m-%d")
 zip -r9 ThunderStorm-Reborn-lto-KERNEL-RM6785-$date.zip *
 curl -sL https://git.io/file-transfer | sh
-./transfer wet ThunderStorm-Reborn-KERNEL-6785-$date.zip
+./transfer wet ThunderStorm-Reborn-lto-KERNEL-RM6785-$date.zip
 }
 
 compile
