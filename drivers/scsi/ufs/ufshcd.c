@@ -1937,14 +1937,8 @@ start:
 				break;
 			}
 			spin_unlock_irqrestore(hba->host->host_lock, flags);
-			/* MTK PATCH */
-			/*
-			 * During suspend flow the link may already in h8,
-			 * but no ungate_work bring back to link up sate.
-			 * So just return when work is already idle.
-			 */
-			wq = flush_work(&hba->clk_gating.ungate_work);
-			if (!wq)
+			flush_result = flush_work(&hba->clk_gating.ungate_work);
+			if (hba->clk_gating.is_suspended && !flush_result)
 				goto out;
 			spin_lock_irqsave(hba->host->host_lock, flags);
 			goto start;
@@ -10450,5 +10444,6 @@ EXPORT_SYMBOL_GPL(ufshcd_init);
 MODULE_AUTHOR("Santosh Yaragnavi <santosh.sy@samsung.com>");
 MODULE_AUTHOR("Vinayak Holikatti <h.vinayak@samsung.com>");
 MODULE_DESCRIPTION("Generic UFS host controller driver Core");
+MODULE_SOFTDEP("pre: governor_simpleondemand");
 MODULE_LICENSE("GPL");
 MODULE_VERSION(UFSHCD_DRIVER_VERSION);

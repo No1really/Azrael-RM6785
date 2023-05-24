@@ -68,6 +68,7 @@
 #define TAG     "[Picachu] "
 
 #define picachu_pr_notice(fmt, args...)	pr_notice(TAG fmt, ##args)
+#define picachu_pr_debug(fmt, args...)	pr_debug(TAG fmt, ##args)
 
 #define picachu_read(addr)		__raw_readl((void __iomem *)(addr))
 #define picachu_write(addr, val)	mt_reg_sync_writel(val, addr)
@@ -197,7 +198,7 @@ static void picachu_apply_efuse_to_eem(enum mt_picachu_vproc_id id,
 
 	/* Get the corresponding array index */
 	array_idx = id * NR_EEM_EFUSE_PER_VPROC;
-
+#ifdef CONFIG_MTK_PTPOD
 	for (i = 0; i < NR_EEM_EFUSE_PER_VPROC; i++, array_idx++) {
 
 		if (p->pi_dvtfixed == PICACHU_DVTFIXED)
@@ -210,6 +211,7 @@ static void picachu_apply_efuse_to_eem(enum mt_picachu_vproc_id id,
 		eem_set_pi_efuse(*(ctrl_id + array_idx),
 				p->ptp1_efuse[i], p->loo_enabled);
 	}
+#endif
 }
 
 static void dump_picachu_info(struct seq_file *m, struct picachu_info *info)
@@ -249,7 +251,7 @@ static int create_procfs_entries(struct proc_dir_entry *dir,
 		if (!proc_create_data(entries[i].name, proc->mode, dir,
 				entries[i].fops,
 				(void *) &picachu_data[proc->vproc_id])) {
-			picachu_pr_notice("create /proc/picachu/%s failed\n",
+			picachu_pr_debug("create /proc/picachu/%s failed\n",
 					entries[i].name);
 			return -ENOMEM;
 		}
@@ -266,14 +268,14 @@ static int create_procfs(void)
 
 	root = proc_mkdir("picachu", NULL);
 	if (!root) {
-		picachu_pr_notice("mkdir /proc/picachu failed\n");
+		picachu_pr_debug("mkdir /proc/picachu failed\n");
 		return -ENOMEM;
 	}
 
 	for (proc = picachu_proc_list; proc->name; proc++) {
 		dir = proc_mkdir(proc->name, root);
 		if (!dir) {
-			picachu_pr_notice("mkdir /proc/picachu/%s failed\n",
+			picachu_pr_debug("mkdir /proc/picachu/%s failed\n",
 							proc->name);
 			return -ENOMEM;
 		}
@@ -338,7 +340,7 @@ static int __init picachu_init(void)
 
 	eem_base_addr = ioremap(EEM_BASEADDR, EEM_SIZE);
 	if (!eem_base_addr) {
-		picachu_pr_notice("ioremap eem_base_addr failed!\n");
+		picachu_pr_debug("ioremap eem_base_addr failed!\n");
 		return -ENOMEM;
 	}
 

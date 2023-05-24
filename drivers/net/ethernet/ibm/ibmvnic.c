@@ -201,13 +201,8 @@ static void free_long_term_buff(struct ibmvnic_adapter *adapter,
 	if (!ltb->buff)
 		return;
 
-	/* VIOS automatically unmaps the long term buffer at remote
-	 * end for the following resets:
-	 * FAILOVER, MOBILITY, TIMEOUT.
-	 */
 	if (adapter->reset_reason != VNIC_RESET_FAILOVER &&
-	    adapter->reset_reason != VNIC_RESET_MOBILITY &&
-	    adapter->reset_reason != VNIC_RESET_TIMEOUT)
+	    adapter->reset_reason != VNIC_RESET_MOBILITY)
 		send_request_unmap(adapter, ltb->map_id);
 	dma_free_coherent(dev, ltb->size, ltb->buff, ltb->addr);
 }
@@ -891,7 +886,8 @@ static int __ibmvnic_open(struct net_device *netdev)
 
 	rc = set_link_state(adapter, IBMVNIC_LOGICAL_LNK_UP);
 	if (rc) {
-		ibmvnic_napi_disable(adapter);
+		for (i = 0; i < adapter->req_rx_queues; i++)
+			napi_disable(&adapter->napi[i]);
 		release_resources(adapter);
 		return rc;
 	}
@@ -1431,7 +1427,7 @@ static int do_reset(struct ibmvnic_adapter *adapter,
 		    struct ibmvnic_rwi *rwi, u32 reset_state)
 {
 	struct net_device *netdev = adapter->netdev;
-	int rc;
+	int i, rc;
 
 	netdev_dbg(adapter->netdev, "Re-setting driver (%d)\n",
 		   rwi->reset_reason);
@@ -1495,6 +1491,10 @@ static int do_reset(struct ibmvnic_adapter *adapter,
 
 	/* refresh device's multicast list */
 	ibmvnic_set_multi(netdev);
+
+	/* kick napi */
+	for (i = 0; i < adapter->req_rx_queues; i++)
+		napi_schedule(&adapter->napi[i]);
 
 	if (adapter->reset_reason != VNIC_RESET_FAILOVER)
 		netdev_notify_peers(netdev);

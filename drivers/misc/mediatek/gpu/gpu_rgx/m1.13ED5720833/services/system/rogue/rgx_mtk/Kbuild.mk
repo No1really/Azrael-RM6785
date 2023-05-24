@@ -44,7 +44,7 @@ ccflags-y += \
 	-I$(srctree)/drivers/staging/android/ion \
 	-I$(srctree)/drivers/staging/android/ion/mtk
 
-ifeq ($(PATCHLEVEL),19)
+ifeq ($(kernel_ver),kernel-4.19)
 ccflags-y += \
 	-I$(srctree)/drivers/gpu/mediatek \
 	-I$(srctree)/drivers/gpu/mediatek/ged/include \

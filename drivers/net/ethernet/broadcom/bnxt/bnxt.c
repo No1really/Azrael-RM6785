@@ -5763,6 +5763,7 @@ void bnxt_tx_disable(struct bnxt *bp)
 	netif_carrier_off(bp->dev);
 	/* Stop all TX queues */
 	netif_tx_disable(bp->dev);
+	netif_carrier_off(bp->dev);
 }
 
 void bnxt_tx_enable(struct bnxt *bp)
