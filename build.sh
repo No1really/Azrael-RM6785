@@ -10,7 +10,11 @@ export ARCH=arm64
 export KBUILD_BUILD_HOST=6785_DEV
 export KBUILD_BUILD_USER="AbzRaider"
 git clone --depth=1 https://gitlab.com/onettboots/boolx-clang.git -b Clang-17.0_x86 clang
-[ -d "out" ] && rm -rf AnyKernel && rm -rf out || mkdir -p out
+
+if ! [ -d "out" ]; then
+echo "Kernel OUT Directory Not Found . Making Again"
+mkdir out
+fi
 
 make O=out ARCH=arm64 RM6785_defconfig
 
