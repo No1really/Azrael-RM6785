@@ -35,6 +35,7 @@ make -j$(nproc --all) O=out \
 
 function zupload()
 {
+rm -rf AnyKernel
 git clone --depth=1 https://github.com/AbzRaider/AnyKernel33 -b ts AnyKernel
 cp out/arch/arm64/boot/Image.gz-dtb AnyKernel
 cd AnyKernel
