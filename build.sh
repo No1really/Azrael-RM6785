@@ -7,11 +7,14 @@ source ~/.bashrc && source ~/.profile
 export LC_ALL=C && export USE_CCACHE=1
 ccache -M 100G
 export ARCH=arm64
-export KBUILD_BUILD_HOST=Anupam_Roy
-export KBUILD_BUILD_USER="Gorilla669"
-git clone --depth=1 https://gitlab.com/Panchajanya1999/azure-clang.git clang
+export KBUILD_BUILD_HOST=6785_DEV
+export KBUILD_BUILD_USER="AbzRaider"
+git clone --depth=1 https://gitlab.com/onettboots/boolx-clang.git -b Clang-17.0_x86 clang
 
-[ -d "out" ] && rm -rf AnyKernel && rm -rf out || mkdir -p out
+if ! [ -d "out" ]; then
+echo "Kernel OUT Directory Not Found . Making Again"
+mkdir out
+fi
 
 make O=out ARCH=arm64 RM6785_defconfig
 
@@ -32,13 +35,13 @@ make -j$(nproc --all) O=out \
 
 function zupload()
 {
-git clone --depth=1 https://github.com/Johny8988/AnyKernel3.git AnyKernel
+rm -rf AnyKernel
+git clone --depth=1 https://github.com/AbzRaider/AnyKernel33 -b ts AnyKernel
 cp out/arch/arm64/boot/Image.gz-dtb AnyKernel
 cd AnyKernel
 date=$(date "+%Y-%m-%d")
-zip -r9 ThunderStorm-lto-KERNEL-RM6785-$date.zip *
-curl -sL https://git.io/file-transfer | sh
-./transfer wet ThunderStorm-lto-KERNEL-RM6785-$date.zip
+zip -r9 TSR-Test-OSS-KERNEL-RM6785-R.zip *
+curl --upload-file "TSR-Test-OSS-KERNEL-RM6785-R.zip" https://free.keep.sh
 }
 
 compile
